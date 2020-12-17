@@ -31,7 +31,7 @@ app.use('/movies', moviesRoutes);
 app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
-    res.send('I am listening')
+    res.send('I am listening');
 })
 //Redirect to Indalid URL 
 app.use(( req, res, next)=> { 
