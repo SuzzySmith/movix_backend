@@ -1,5 +1,6 @@
 const HttpError = require('../models/http-error');
 const { validationResult } = require('express-validator')
+const request = require('request');
 const mongoose = require ('mongoose')
 //const Movies = require('../models/movies');
  
@@ -8,9 +9,7 @@ const mongoose = require ('mongoose')
 const getAllMovies  = async (req, res, next) => {
   // const userId = req.params.uid
     let allMovies;
-    //let location = req.params.town;
- console.log(process.env.API)
-        try {
+        try { 
           
           allMovies = await  request(process.env.API, 
                                   (err,req, body) => {
@@ -37,7 +36,7 @@ const getMoviesByName =async  (req, res, next) => {
                  );
              }
 
-        const movieTitle = req.params.title ;
+        const movieTitle = req.params.s ;
         let movie;
       //  console.log({name:`/.*${movieTitle}.*/`})
         try {
