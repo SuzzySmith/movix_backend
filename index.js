@@ -1,24 +1,25 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 const cors = require('cors')
 require('dotenv').config();
-const apiPort = process.env.PORT 
+const apiPort = process.env.PORT ;
 
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
+app.use(bodyParser.json());
+app.use(cors());
 
 //Allowing Cross Origin Resource Sharing
-app.use( (req,res,next)=>{
+ app.use( (req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
         'Access-Control-Allow-Headers', 
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
         );
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
-    next();
-  })
+   next();
+   });
+   
 
 
 //Importing Routes
@@ -27,7 +28,7 @@ const moviesRoutes = require('./routes/movies')
 const HttpError = require('./models/http-error');
 
 //Using Routes
-app.use('/movies', moviesRoutes);
+app.use('/movies', moviesRoutes); 
 app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {

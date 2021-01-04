@@ -9,21 +9,20 @@ const mongoose = require ('mongoose')
 const getAllMovies  = async (req, res, next) => {
   // const userId = req.params.uid
     let allMovies;
-        try { 
-          
-          allMovies = await  request(process.env.API, 
-                                  (err,req, body) => {
-                                    if(!err && res.statusCode==200){ 
-                                      res.send(body);
-                                    }
-                                  })
-                                 
-        } catch (err) {
-          const error = new HttpError('Something went wrong, could not find the Movie.',500);
-          return next(error);
-        }
-      
-        res.json({ response: allMovies });   
+    try { 
+      allMovies = await  request(process.env.API, 
+                                       (err,req, body) => {
+                                if(!err && res.statusCode==200){ 
+                                  res.send(body);
+                                }
+                              })
+                             
+    } catch (err) {  
+      const error = new HttpError('Something went wrong, could not find the Movie.',500);
+      return next(error);
+    }
+
+        // res.json({ response: allMovies });   
 };
 
 
