@@ -15,7 +15,7 @@ const getAllMovies  = async (req, res, next) => {
                                 if(!err && res.statusCode==200){ 
                                   res.send([body].Search);
                                 }
-                              })
+                              });
                              
     } catch (err) {  
       const error = new HttpError('Something went wrong, could not find the Movie.',500);
