@@ -13,7 +13,7 @@ const getAllMovies  = async (req, res, next) => {
       allMovies = await  request(process.env.API, 
                                        (err,req, body) => {
                                 if(!err && res.statusCode==200){ 
-                                  res.send(body);
+                                  res.send([body].Search);
                                 }
                               })
                              
